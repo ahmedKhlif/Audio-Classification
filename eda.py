@@ -119,14 +119,14 @@ mfccs = {}
 
 for c in classes:
     wav_file = df[df.label == c].iloc[0, 0]
-    signal, rate = librosa.load('wavfiles/' + wav_file, sr=44100)
+    signal, rate = librosa.load('wavfiles/' + wav_file, sr=48000)
     mask = envelope(signal, rate,0.0005)
     signals[c] = signal[mask]
     fft[c] = calc_fft(signal, rate)
 
-    bank = logfbank(signal[:rate], rate, nfilt=26, nfft=1103).T
+    bank = logfbank(signal[:rate], rate, nfilt=26, nfft=1200).T
     fbank[c] = bank
-    mel = mfcc(signal[:rate], rate, numcep=13, nfilt=26, nfft=1103).T
+    mel = mfcc(signal[:rate], rate, numcep=13, nfilt=26, nfft=1200).T
     mfccs[c] = mel
 
 plot_signals(signals)

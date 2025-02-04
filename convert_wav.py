@@ -25,7 +25,7 @@ for f in os.listdir(input_dir):
         command = [
             'ffmpeg', '-i', input_path, 
         '-acodec', 'pcm_s16le',  # Convert to 16-bit PCM
-        '-ar', '44100',          # Set sample rate to 44,100 Hz
+        '-ar', '48000',          # Set sample rate to 48,000 Hz
         output_path, '-y'        # Overwrite existing files without asking
         ]
         
